@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+<body>
+<h3>Modify City</h3>
+<p>
+    <a th:href="@{/city}">
+        Back To List
+    </a>
+</p>
+<div id="form">
+    <form  th:object="${city}" method="POST">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+        </div>
+        <div>
+            <label>Area</label>
+            <input required type="text" th:field="*{area}"/>
+            <p th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Area Error</p>
+        </div>
+        <div>
+            <label>Population</label>
+            <input required type="text" th:field="*{population}"/>
+            <p th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Population Error</p>
+        </div>
+        <div>
+            <label>GDP</label>
+            <input required type="text" th:field="*{gdp}"/>
+            <p th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">GDP Error</p>
+        </div>
+        <div>
+            <label>Description</label>
+            <input type="text" th:field="*{description}"/>
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</p>
+        </div>
+        <div>
+
+            <label>Nation</label>
+            <select th:field="*{nation}">
+                <option th:each="n :${listNation}" th:value="${n.id}" th:text="${n.name}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Modify">
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <a href="/city">Show list</a>
+</div>
+<div th:object="${city}">
+    <h3 th:text="'City: ' + ${city.name}"></h3>
+    <p th:text="'Name: '+ ${city.name}"></p>
+    <p th:text="'Area: '+ ${city.area}"></p>
+    <p th:text="'Population: '+ ${city.population}"></p>
+    <p th:text="'GDP: '+ ${city.gdp}"></p>
+    <p th:text="'Description: '+ ${city.description}"></p>
+</div>
+<div>
+    <a th:href="@{/city/edit(id=${city.getId()})}">Edit City</a>
+</div>
+<div>
+    <a onclick ="return confirm('Bạn có chắc chắn muốn xóa không?')" th:href="@{/city/delete(id=${city.getId()})}">Delete</a>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
